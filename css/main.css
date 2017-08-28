@@ -1,0 +1,15 @@
+section {
+    width: 900px;
+    margin: 0 auto;
+    background: whitesmoke;
+    padding: 100px 0;
+}
+
+.first,
+.second {
+    display: inline-block;
+}
+
+.first {
+    margin-right: 150px;
+}
