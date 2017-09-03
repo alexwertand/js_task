@@ -13,14 +13,24 @@ $(document).ready(function (){
     ];
     var $first = $('.first img');
     var $second = $('.second img');
-    var i = -1;
     var min = 0;
-    var max = source.length - 1; 
+    var max = source.length; 
 
     setInterval(function() {
-        var variable_num_first = Math.floor(Math.random() * (max - min + 1) + min);
-        var variable_num_second = Math.floor(Math.random() * (max - min + 1) + min);
-        $first.attr('src', source[variable_num_first]);
-        $second.attr('src', source[variable_num_second]);
+        var num_first = Math.floor(Math.random() * (max - min + 1) + min);
+        var num_second = Math.floor(Math.random() * (max - min + 1) + min);
+
+        if (num_first == num_second) {
+            if (num_first && num_second == 10) {
+                num_first == 0;
+                console.log('equal');
+            }
+
+            console.log('equal');
+            num_first += num_first;
+        }
+
+        $first.attr('src', source[num_first]);
+        $second.attr('src', source[num_second]);
     }, 1500);
 });
