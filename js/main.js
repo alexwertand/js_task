@@ -14,12 +14,13 @@ $(document).ready(function (){
     var $first = $('.first img');
     var $second = $('.second img');
     var i = -1;
+    var min = 0;
+    var max = source.length - 1; 
 
     setInterval(function() {
-        ++i;
-        if (i < 10) {
-            $first.attr('src', source[i]);
-            $second.attr('src', source[i]);
-        }
+        var variable_num_first = Math.floor(Math.random() * (max - min + 1) + min);
+        var variable_num_second = Math.floor(Math.random() * (max - min + 1) + min);
+        $first.attr('src', source[variable_num_first]);
+        $second.attr('src', source[variable_num_second]);
     }, 1500);
 });
