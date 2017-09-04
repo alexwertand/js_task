@@ -20,14 +20,12 @@ $(document).ready(function (){
         var num_first = Math.floor(Math.random() * (max - min + 1) + min);
         var num_second = Math.floor(Math.random() * (max - min + 1) + min);
 
-        if (num_first == num_second) {
-            if (num_first && num_second == 10) {
-                num_first == 0;
-                console.log('equal');
-            }
+        if (num_first >= 5) {
+            num_second = Math.floor(Math.random() * 5);
+        }
 
-            console.log('equal');
-            num_first += num_first;
+        if (num_first <= 4) {
+            num_second = Math.floor(Math.random() * 6 + 5);
         }
 
         $first.attr('src', source[num_first]);
