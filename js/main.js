@@ -11,14 +11,21 @@ $(document).ready(function (){
         'img/9.jpg',
         'img/10.jpg',
     ];
+
     var $first = $('.first img');
     var $second = $('.second img');
-    var min = 0;
-    var max = source.length;
+
+    var num_first, num_second;
+
+    function evaluating (min = 0, max = source.length) {
+        num_first = Math.floor(Math.random() * (max - min + 1) + min);
+        num_second = Math.floor(Math.random() * (max - min + 1) + min);
+
+        return num_first, num_second;
+    }
 
     setInterval(function() {
-        var num_first = Math.floor(Math.random() * (max - min + 1) + min);
-        var num_second = Math.floor(Math.random() * (max - min + 1) + min);
+        evaluating();
 
         if (num_first >= 5) {
             num_second = Math.floor(Math.random() * 5);
@@ -28,7 +35,9 @@ $(document).ready(function (){
             num_second = Math.floor(Math.random() * 6 + 5);
         }
 
-        $first.attr('src', source[num_first]);
-        $second.attr('src', source[num_second]);
+        var currentPosFirst = parseInt($first.attr('src', source[num_first]).attr('src').replace(/[^\d.]/g, ''));
+        var currentPosSecond = parseInt($second.attr('src', source[num_second]).attr('src').replace(/[^\d.]/g, ''));
+
+        console.log(currentPosSecond);
     }, 1500);
 });
