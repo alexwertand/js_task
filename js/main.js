@@ -14,7 +14,7 @@ $(document).ready(function (){
     var $first = $('.first img');
     var $second = $('.second img');
     var min = 0;
-    var max = source.length; 
+    var max = source.length;
 
     setInterval(function() {
         var num_first = Math.floor(Math.random() * (max - min + 1) + min);
