@@ -14,30 +14,74 @@ $(document).ready(function (){
 
     var $first = $('.first img');
     var $second = $('.second img');
+    var min = 0;
+    var max = source.length - 1;
 
-    var num_first, num_second;
+    var num_first, num_second, currentPosFirst, currentPosSecond;
 
-    function evaluating (min = 0, max = source.length) {
+    function getRandomValue () {
         num_first = Math.floor(Math.random() * (max - min + 1) + min);
         num_second = Math.floor(Math.random() * (max - min + 1) + min);
+
+        if (num_first == num_second) {
+            num_first = Math.floor(Math.random() * 5);
+            num_second = Math.floor(Math.random() * 5 + 5);
+        }
 
         return num_first, num_second;
     }
 
-    setInterval(function() {
-        evaluating();
+    
 
-        if (num_first >= 5) {
+    function setAttr() {
+        getRandomValue();
+
+        currentPosFirst = parseInt($first.attr('src', source[num_first]).attr('src').replace(/[^\d.]/g, ''));
+        currentPosSecond = parseInt($second.attr('src', source[num_second]).attr('src').replace(/[^\d.]/g, ''));
+        
+
+        
+        return currentPosFirst, currentPosSecond;
+    }
+
+    function checkValue () {
+        setAttr();
+
+        if (currentPosFirst >= 5 && currentPosSecond <= 4) {
+            num_first = Math.floor(Math.random() * 5 + 5);
             num_second = Math.floor(Math.random() * 5);
+            console.log(num_first, num_second);
+            return num_first, num_second;
         }
 
-        if (num_first <= 4) {
-            num_second = Math.floor(Math.random() * 6 + 5);
+        if (currentPosFirst <= 4 && currentPosSecond >= 5) {
+            num_first = Math.floor(Math.random() * 5 + 5);
+            num_second = Math.floor(Math.random() * 5 + 5);
+            console.log(num_first, num_second);
+            return num_first, num_second;
         }
 
-        var currentPosFirst = parseInt($first.attr('src', source[num_first]).attr('src').replace(/[^\d.]/g, ''));
-        var currentPosSecond = parseInt($second.attr('src', source[num_second]).attr('src').replace(/[^\d.]/g, ''));
+        if (currentPosFirst >= 5 && currentPosSecond >= 5) {
+            num_first = Math.floor(Math.random() * 5);
+            num_second = Math.floor(Math.random() * 5 + 5);
+            console.log(num_first, num_second);
+            return num_first, num_second;
+        }
 
-        console.log(currentPosSecond);
+        if (currentPosFirst <= 4 && currentPosSecond <= 4) {
+            num_first = Math.floor(Math.random() * 5);
+            num_second = Math.floor(Math.random() * 5);
+            console.log(num_first, num_second);
+            return num_first, num_second;
+        }
+
+        
+    }
+
+    setInterval(function() { 
+        checkValue();
     }, 1500);
 });
+
+//  var currentPosFirst = parseInt($first.attr('src', source[num_first]).attr('src').replace(/[^\d.]/g, ''));
+//  var currentPosSecond = parseInt($second.attr('src', source[num_second]).attr('src').replace(/[^\d.]/g, ''));
